@@ -1,3 +1,147 @@
-{
-  "extends": "next/core-web-vitals"
+{"settings": {
+  "import/resolver": {
+    "typescript": {}
+  }
+},
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "overrides": [
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "prettier",
+        "import",
+        "typescript-sort-keys"
+    ],
+    "rules": {
+        // "indent": [
+        //     "error",
+        //     "tab"
+        // ],
+        // "linebreak-style": [
+        //     "error",
+        //     "unix"
+        // ],
+        // "quotes": [
+        //     "error",
+        //     "double"
+        // ],
+        // "semi": [
+        //     "error",
+        //     "always"
+        // ],
+    "padding-line-between-statements": [
+      "error",
+      { "blankLine": "always", "prev": "*", "next": "return" },
+      { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*" },
+      {
+        "blankLine": "any",
+        "prev": ["const", "let", "var"],
+        "next": ["const", "let", "var"]
+      }
+    ],
+    "no-unsafe-any": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-debugger": "error",
+    "no-console": "off",
+    "no-var": "error",
+    "no-restricted-syntax": ["off", "ForOfStatement"],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "key-spacing": ["error", { "afterColon": true }],
+    "no-multi-spaces": "error",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", ["parent", "sibling"]],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": {
+          "memberTypes": [
+            // Index signature
+            "signature",
+
+            // Fields
+            "public-instance-field",
+            "protected-instance-field",
+            "private-instance-field",
+            "public-static-field",
+            "protected-static-field",
+            "private-static-field",
+            "public-abstract-field",
+            "protected-abstract-field",
+            "private-abstract-field",
+            "field",
+
+            // Methods
+            "public-instance-method",
+            "protected-instance-method",
+            "private-instance-method",
+            "public-static-method",
+            "protected-static-method",
+            "private-static-method",
+            "public-abstract-method",
+            "protected-abstract-method",
+            "private-abstract-method",
+            "method"
+          ],
+          "order": "alphabetically"
+        }
+      }
+    ],
+    "@typescript-eslint/lines-between-class-members": [
+      "error",
+      "always",
+      { "exceptAfterSingleLine": true }
+    ],
+    "@typescript-eslint/no-unsafe-argument": "off",
+    "@typescript-eslint/default-param-last": ["off"],
+    "typescript-sort-keys/interface": "error",
+    "typescript-sort-keys/string-enum": "error",
+    "@next/next/no-img-element": "off"
+    }
 }

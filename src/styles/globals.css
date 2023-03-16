@@ -1,9 +1,16 @@
+@import '/Users/someone/ambicious/node_modules/antd/dist/antd.css';
+
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+h1{
+  margin: 0
 }
 
 a {
@@ -15,6 +22,14 @@ a {
   box-sizing: border-box;
 }
 
+.auth-page-layout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -24,3 +39,4 @@ a {
     background: black;
   }
 }
+

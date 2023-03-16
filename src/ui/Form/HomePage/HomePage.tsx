@@ -1,8 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import { useEffect, useState } from "react";
 
-export default function Home() {
+import { Spin } from "antd";
+import Head from "next/head";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+import { useAuth } from "@hooks";
+
+import styles from "../../../styles/Home.module.css";
+import "antd/dist/antd.css";
+
+const Home = () => {
+  const { isAuth } = useAuth();
+
+  const [isAuthState, setIsAuthState] = useState("loading");
+
+  useEffect(() => {
+    isAuth ? setIsAuthState("authorized") : setIsAuthState("unauthorized");
+  }, [isAuth]);
+
   return (
     <div className={styles.container}>
       <Head>
@@ -13,18 +29,25 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome, to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <div>
+          {isAuthState === "loading" ? (
+            <Spin />
+          ) : (
+            `You are ${
+              isAuthState == "authorized" ? "authorized" : "not authorized"
+            }`
+          )}
+        </div>
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.tsx</code>
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+          <a href="http://localhost:3000/auth" className={styles.card}>
+            <h2>Authorization &rarr;</h2>
           </a>
 
           <a href="https://nextjs.org/learn" className={styles.card}>
@@ -60,12 +83,14 @@ export default function Home() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
-}
+  );
+};
+
+export default Home;

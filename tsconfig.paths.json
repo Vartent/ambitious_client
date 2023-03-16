@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@entities": ["./src/entities/index.ts"],
+        // "@layouts": ["./src/layouts/index.ts"],
+        "@modules/*": ["./src/modules/*"],
+        // "@routes": ["./src/routes/index.ts"],
+        "@services/*": ["./src/services/*"],
+        "@ui": ["./src/ui/index.ts"],
+        "@utils": ["./src/utils/index.ts"],
+        "@utils/helpers": ["./src/utils/helpers/index.ts"],
+        "@store/*": ["./src/store/*"],
+        "@hooks": ["./src/hooks/index.ts"],
+        "@layouts": ["./src/layouts/index.ts"]
+      }
+    }
+  }
