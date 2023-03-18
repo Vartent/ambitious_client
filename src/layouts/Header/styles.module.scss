@@ -1,0 +1,22 @@
+.main-menu-header{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 5vh;
+    background-color: aliceblue;
+}
+
+.main-menu-item{
+    font-size: large;
+    margin: 0 10px 0 10px;
+}
+
+.sider-menu{
+    background-color: white !important;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    height: 100%;
+}
+
+.main-layout{
+    height: 100vh;
+}

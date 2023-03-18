@@ -51,10 +51,16 @@ const GantChart = () => {
       onCell: () => ({ style: { width: "100px" } }),
     },
     {
+      ellipsis: true,
       title: "Description",
       dataIndex: "description",
       fixed: "left",
-      onCell: () => ({ style: { width: "150px" } }),
+      render: (text) => (
+        <div style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", display: "inline-block", maxWidth: "100px" }}>
+          {text}
+        </div>
+      ),
+      onCell: () => ({ style: { width: "100px" } }),
     },
     {
       title: "Duration",

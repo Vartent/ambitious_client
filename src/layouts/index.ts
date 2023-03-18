@@ -1,1 +1,1 @@
-export { default as LayoutAccount } from "./Account/index";
+export { default as LayoutAccount } from "./Header/index";
