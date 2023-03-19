@@ -56,7 +56,15 @@ const GantChart = () => {
       dataIndex: "description",
       fixed: "left",
       render: (text) => (
-        <div style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", display: "inline-block", maxWidth: "100px" }}>
+        <div
+          style={{
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            whiteSpace: "nowrap",
+            display: "inline-block",
+            maxWidth: "100px",
+          }}
+        >
           {text}
         </div>
       ),
