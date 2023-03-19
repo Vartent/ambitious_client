@@ -37,7 +37,7 @@ const LayoutAccount = ({ children }: Props) => {
     <Layout className={styles["main-layout"]}>
       <Header className="header">
         <Menu
-          className="header-menu"
+          className={styles["header-menu"]}
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={["2"]}

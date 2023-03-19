@@ -1,0 +1,2 @@
+export const GANT_UPDATE_PERIOD = "@project/PROJECT_UPDATE_PERIOD";
+export const GANT_UPDATE_GANT_SCALE = "@project/PROJECT_UPDATE_GANT_SCALE";

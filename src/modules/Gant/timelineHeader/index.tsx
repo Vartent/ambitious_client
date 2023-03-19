@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import TimelineComponent from "./timelineComponent";
 import { TimelineElementType } from "./timelineHeader.type";
 const TimelineHeader = () => {
-  const { scale } = useSelector((state: RootState) => state.project);
+  const { scale } = useSelector((state: RootState) => state.gant);
 
   return (
     <div className={styles["timeline-container"]}>

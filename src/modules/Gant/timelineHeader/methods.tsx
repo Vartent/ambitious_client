@@ -1,8 +1,8 @@
 import moment from "moment";
 import { useSelector } from "react-redux";
 
+import { Period } from "@store/Gant/Gant.types";
 import { RootState } from "@store/index";
-import { Period } from "@store/Project/Project.types";
 
 import { HeaderElementList, TimelineElementType } from "./timelineHeader.type";
 
@@ -36,7 +36,7 @@ export const getDays = (interval: Period): HeaderElementList => {
 };
 
 export const getMonths = (interval: Period): HeaderElementList => {
-  const { scale } = useSelector((state: RootState) => state.project);
+  const { scale } = useSelector((state: RootState) => state.gant);
 
   const months: HeaderElementList = [];
 

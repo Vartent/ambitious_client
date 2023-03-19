@@ -1,70 +1,41 @@
 import * as React from "react";
-import { useEffect, useState } from "react";
 
-import { DatePicker, DatePickerProps, InputNumber, List } from "antd";
-import {
-  RangePickerBaseProps,
-  RangePickerProps,
-  RangePickerTimeProps,
-} from "antd/lib/date-picker/generatePicker";
-import moment, { Moment } from "moment";
-import { RangeValue } from "rc-picker/lib/interface";
+import { DatePicker } from "antd";
+import { Moment } from "moment";
+import { useSelector } from "react-redux";
 
 import GantChart from "@modules/Gant";
-import TimelineHeader from "@modules/Gant/timelineHeader";
 import "antd/dist/antd.css";
-import { useAppDispatch } from "@store/index";
-import { updateGantPeriod, updateGantScale } from "@store/Project";
-import { Period } from "@store/Project/Project.types";
+import { updateGantPeriod } from "@store/Gant";
+import { useAppDispatch, RootState } from "@store/index";
 
 const Workshop = () => {
   const dispatch = useAppDispatch();
-
-  const initialState: Period = {
-    finishDate: null,
-    startDate: null,
-  };
-  const [selectedPeriod, setSelectedPeriod] = useState<Period>(initialState);
-
-  const onChangeFinishDate = (value: Moment | null) => {
-    setSelectedPeriod({ ...selectedPeriod, finishDate: value });
-  };
+  const { period } = useSelector((state: RootState) => state.gant);
 
   const onChangeStartDate = (value: Moment | null) => {
-    setSelectedPeriod({ ...selectedPeriod, startDate: value });
+    dispatch(updateGantPeriod({ ...period, startDate: value }));
   };
 
-  const onChangeScale = (value: number | null) => {
-    value && dispatch(updateGantScale(value));
+  const onChangeFinishDate = (value: Moment | null) => {
+    dispatch(updateGantPeriod({ ...period, finishDate: value }));
   };
-
-  useEffect(() => {
-    selectedPeriod.finishDate &&
-      selectedPeriod.startDate &&
-      dispatch(updateGantPeriod(selectedPeriod));
-  }, [selectedPeriod]);
 
   return (
     <>
       <div>
         startDate:{" "}
         <DatePicker
-          value={selectedPeriod.startDate}
+          value={period.startDate}
           onChange={(value) => onChangeStartDate(value)}
         />
       </div>
       <div>
         finishDate:{" "}
         <DatePicker
-          value={selectedPeriod.finishDate}
+          value={period.finishDate}
           onChange={(value) => onChangeFinishDate(value)}
         />
-      </div>
-      <div>
-        Scale:{" "}
-        <span>
-          <InputNumber onChange={onChangeScale} />
-        </span>
       </div>
 
       <GantChart />

@@ -1,47 +1,26 @@
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import { Table, Slider, DatePicker, Input, InputNumber } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import moment, { Moment } from "moment";
 import { useSelector } from "react-redux";
 
+import { updateGantScale } from "@store/Gant";
 import { RootState, useAppDispatch } from "@store/index";
-import { updateGantScale } from "@store/Project";
 
+import { DataType } from "./index.type";
 import styles from "./styles.module.scss";
 import TimelineHeader from "./timelineHeader";
-const GantChart = () => {
-  const { scale } = useSelector((state: RootState) => state.project);
-  const startDateDeafult = new Date();
-  const finishDateDefault = new Date();
 
-  finishDateDefault.setDate(startDateDeafult.getDate() + 365);
+const GantChart = () => {
+  const { scale } = useSelector((state: RootState) => state.gant);
+
   const [processDuration, setProcessDuration] = useState<number>(0);
   const dispatch = useAppDispatch();
 
   const scaleHandler = (value: number) => {
     dispatch(updateGantScale(value));
   };
-
-  enum TimeUnits {
-    days = "days",
-    hours = "hours",
-    weeks = "weeks",
-  }
-
-  interface Duration {
-    amount: number | null;
-    units: TimeUnits;
-  }
-
-  interface DataType {
-    chart?: any | null;
-    description: string;
-    duration?: Duration;
-    key: number;
-    name: string;
-    startDate?: Moment;
-  }
 
   const columns: ColumnsType<DataType> = [
     {
@@ -128,14 +107,23 @@ const GantChart = () => {
 
   const data: DataType[] = [
     {
-      key: 1,
+      key: 1, // the key must be usique to avoid expanding all the row with this key
       name: "name1",
       description: "name1 is a first name very long fucking name hahaha",
       startDate: moment(),
       chart: processDuration,
+      children: [
+        {
+          key: 3,
+          name: "name1",
+          description: "name1 is a first name very long fucking name hahaha",
+          startDate: moment(),
+          chart: processDuration,
+        },
+      ],
     },
     {
-      key: 1,
+      key: 2,
       name: "name2",
       description: "name2 is a second name",
     },
@@ -146,10 +134,11 @@ const GantChart = () => {
       <Slider
         {...{ max: 50, min: 2 }}
         onChange={scaleHandler}
-        defaultValue={1}
+        value={scale}
         style={{ left: "450px", width: "300px" }}
       />
       <Table
+        pagination={{ position: [] }}
         className={styles["gant-chart-table"]}
         size="small"
         columns={columns}

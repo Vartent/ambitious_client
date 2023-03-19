@@ -1,7 +1,11 @@
+import { useCallback, useEffect } from "react";
+
+import moment from "moment";
 import { useSelector } from "react-redux";
 
-import { RootState } from "@store/index";
-import { Period } from "@store/Project/Project.types";
+import { updateGantPeriod, updateGantScale } from "@store/Gant";
+import { Period } from "@store/Gant/Gant.types";
+import { RootState, useAppDispatch } from "@store/index";
 
 import { getDays, getMonths, getWeeks, getYears } from "./methods";
 import styles from "./styles.module.scss";
@@ -18,7 +22,20 @@ import {
 } from "./timelineHeader.type";
 
 const TimelineComponent = ({ type, visible = true }: Props) => {
-  const { period, scale } = useSelector((state: RootState) => state.project);
+  const { period, scale } = useSelector((state: RootState) => state.gant);
+  const dispatch = useAppDispatch();
+
+  const momentStartDate = useCallback(() => moment(), []);
+  const momentFinishDate = useCallback(() => moment().add(5, "years"), []);
+
+  useEffect(() => {
+    dispatch(
+      updateGantPeriod({
+        startDate: momentStartDate(),
+        finishDate: momentFinishDate(),
+      })
+    );
+  }, [momentStartDate, momentFinishDate]);
 
   const ElementChild = ({ element, elementSize }: ElementChildProps) => {
     switch (element.type) {
