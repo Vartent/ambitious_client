@@ -137,14 +137,16 @@ const GantChart = () => {
         value={scale}
         style={{ left: "450px", width: "300px" }}
       />
-      <Table
-        pagination={{ position: [] }}
-        className={styles["gant-chart-table"]}
-        size="small"
-        columns={columns}
-        dataSource={data}
-        scroll={{ x: "max-content" }}
-      />
+      <div className={styles["ant-table-wrapper"]}>
+        <Table
+          pagination={{ position: [] }}
+          className={styles["gant-chart-table"]}
+          size="small"
+          columns={columns}
+          dataSource={data}
+          scroll={{ x: "max-content" }}
+        />
+      </div>
     </>
   );
 };

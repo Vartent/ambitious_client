@@ -13,4 +13,39 @@
 }
 
 .gant-chart-table{
+background-color: aquamarine;
+height: 1000px;
 }
+
+.table-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .ant-table-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+  }
+  
+  .ant-table-body {
+    flex: 1;
+    overflow-y: scroll;
+    flex-flow: column;
+    height: 1000px;
+  }
+  
+  .ant-table-scroll {
+    overflow-y: hidden !important;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column-reverse; /* this line places the scrollbar at the bottom */
+  }
+  
+  .ant-table-footer {
+    flex: 0 0 auto;
+  }
+  

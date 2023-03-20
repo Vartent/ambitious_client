@@ -1,5 +1,5 @@
 @import '/Users/someone/ambicious/node_modules/antd/dist/antd.css';
-
+@import 'antd/dist/antd.css';
 
 html,
 body {
@@ -39,4 +39,3 @@ a {
     background: black;
   }
 }
-

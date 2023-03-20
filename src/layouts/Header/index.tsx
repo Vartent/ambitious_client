@@ -47,6 +47,7 @@ const LayoutAccount = ({ children }: Props) => {
       <Layout>
         <Sider width={200} className={styles["sider-menu"]}>
           <Menu
+            style={{ height: "100%" }}
             mode="inline"
             defaultSelectedKeys={["1"]}
             defaultOpenKeys={["sub1"]}

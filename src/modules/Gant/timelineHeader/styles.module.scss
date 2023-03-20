@@ -1,5 +1,6 @@
 .timeline-container {
     width: min-content;
+    background-color: none;
 };
 
 .timeline-component{
@@ -9,7 +10,7 @@
 }
 
 .timeline-element{
-    border: 1px solid white;
-    background-color: rgb(0, 0, 0, 0.02);
-    border-radius: 1px;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 0px;
 }
